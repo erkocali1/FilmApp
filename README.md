@@ -30,3 +30,6 @@ Bunlar : Upcoming(Filmlere özel) , Latest , Toprated
 Kullanıcı resmi alanı olacak. Kullanıcının resmi yoksa default profile iconu olacak.
 Arama butonu olacak. Arama butonuna basınca kullanıcı arama sayfasına yönlendirilecek.
 Kullanıcı herhangi bir film yada dizinin üzerine basarsa detay ekranına yönlendirilecek.
+
+
+Tasarımlar : https://dribbble.com/shots/21176531--Stake-Movie-App buradan referans alınacak
