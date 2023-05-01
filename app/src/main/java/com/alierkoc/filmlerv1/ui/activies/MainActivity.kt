@@ -1,7 +1,8 @@
-package com.alierkoc.filmlerv1
+package com.alierkoc.filmlerv1.ui.activies
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.alierkoc.filmlerv1.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
