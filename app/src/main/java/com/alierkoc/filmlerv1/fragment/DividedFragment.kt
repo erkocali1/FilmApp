@@ -14,7 +14,7 @@ class DividedFragment : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
+
         binding=FragmentDividedBinding.inflate(layoutInflater,container,false)
 
 
@@ -27,7 +27,7 @@ class DividedFragment : Fragment() {
 
         binding.cardTvShow.setOnClickListener {
 
-            val action=DividedFragmentDirections.actionDividedFragmentToMovieFragment()
+            val action=DividedFragmentDirections.actionDividedFragmentToTvShowsFragment()
             findNavController().navigate(action)
         }
         return binding.root
