@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dividedFragment">
+    <fragment
+        android:id="@+id/dividedFragment"
+        android:name="com.alierkoc.filmlerv1.fragment.DividedFragment"
+        android:label="fragment_divided"
+        tools:layout="@layout/fragment_divided" >
+        <action
+            android:id="@+id/action_dividedFragment_to_movieFragment"
+            app:destination="@id/movieFragment" />
+        <action
+            android:id="@+id/action_dividedFragment_to_tvShowsFragment"
+            app:destination="@id/tvShowsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieFragment"
+        android:name="com.alierkoc.filmlerv1.fragment.MovieFragment"
+        android:label="fragment_movie"
+        tools:layout="@layout/fragment_movie" />
+    <fragment
+        android:id="@+id/tvShowsFragment"
+        android:name="com.alierkoc.filmlerv1.fragment.TvShowsFragment"
+        android:label="fragment_tv_shows"
+        tools:layout="@layout/fragment_tv_shows" />
+</navigation>
