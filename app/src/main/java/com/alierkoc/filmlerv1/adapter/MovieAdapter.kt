@@ -6,8 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.alierkoc.filmlerv1.databinding.ItemRowBinding
 import com.alierkoc.filmlerv1.model.FilmData
 
-class MovieAdapter(var filmDataList: ArrayList<FilmData>) :
-    RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
+class MovieAdapter(var filmDataList: ArrayList<FilmData>) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
 
     class ViewHolder(private val binding: ItemRowBinding) : RecyclerView.ViewHolder(binding.root) {

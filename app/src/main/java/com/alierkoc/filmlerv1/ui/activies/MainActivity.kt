@@ -1,6 +1,7 @@
 package com.alierkoc.filmlerv1.ui.activies
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -8,15 +9,21 @@ import com.alierkoc.filmlerv1.R
 import com.alierkoc.filmlerv1.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var sp:SharedPreferences
     private lateinit var binding:ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val sp=getSharedPreferences("Entry Information", MODE_PRIVATE)
+        sp=getSharedPreferences("entryInformation", MODE_PRIVATE)
+        setOnClickLister()
 
 
+
+    }
+
+    private fun setOnClickLister(){
         binding.signUp.setOnClickListener {
 
             val userName=binding.userName.text.toString()
@@ -39,5 +46,6 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+
     }
 }
