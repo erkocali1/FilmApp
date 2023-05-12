@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.alierkoc.filmlerv1.databinding.FragmentDetailBinding
-import com.alierkoc.filmlerv1.model.MovieDetailResult
+import com.alierkoc.filmlerv1.model.detail.MovieDetailResult
 import com.alierkoc.filmlerv1.viewmodel.DetailViewModel
 import com.bumptech.glide.Glide
 
@@ -17,6 +17,7 @@ class DetailFragment : Fragment() {
     private lateinit var binding: FragmentDetailBinding
     private lateinit var detailMovies : ArrayList<MovieDetailResult>
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -24,7 +25,7 @@ class DetailFragment : Fragment() {
     ): View? {
         binding = FragmentDetailBinding.inflate(layoutInflater, container, false)
         return binding.root
-        
+
 
     }
 
@@ -50,6 +51,17 @@ class DetailFragment : Fragment() {
     fun displayData(movieDetailResult: MovieDetailResult) {
         binding.detailExplain.text=movieDetailResult.overview
         binding.detailName.text=movieDetailResult.title
+        binding.popularity.text=movieDetailResult.homepage
+
+
+        val genreList=movieDetailResult.genres.map { it.name }
+        val genreString=genreList.joinToString(" /","")
+        binding.genres.text=genreString
+//        var  genreList= movieDetailResult.genres[1]
+//        var  genreList2= movieDetailResult.genres[2]
+//        binding.genres.text=genreList.toString()
+//        binding.genresX.text=genreList2.toString()
+
         val url = "https://image.tmdb.org/t/p/w500/${movieDetailResult.backdropPath}"
         Glide.with(requireContext())
             .load(url)

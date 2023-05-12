@@ -1,15 +1,12 @@
 package com.alierkoc.filmlerv1.servis
 
-import com.alierkoc.filmlerv1.model.MovieDetailResult
-import com.alierkoc.filmlerv1.model.Popular
-import com.alierkoc.filmlerv1.model.Trend
-import com.alierkoc.filmlerv1.model.TrendResult
-import com.alierkoc.filmlerv1.model.UpComing
+import com.alierkoc.filmlerv1.model.detail.MovieDetailResult
+import com.alierkoc.filmlerv1.model.Popular.Popular
+import com.alierkoc.filmlerv1.model.trend.Trend
+import com.alierkoc.filmlerv1.model.upComing.UpComing
 import retrofit2.Call
-import retrofit2.http.Field
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.Query
 
 interface FilmAPI {
 

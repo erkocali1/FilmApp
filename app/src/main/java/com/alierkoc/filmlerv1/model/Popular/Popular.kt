@@ -1,5 +1,6 @@
-package com.alierkoc.filmlerv1.model
+package com.alierkoc.filmlerv1.model.Popular
 
+import com.alierkoc.filmlerv1.model.Popular.ResultResponse
 import com.google.gson.annotations.SerializedName
 
 data class Popular(

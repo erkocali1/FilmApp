@@ -1,10 +1,10 @@
 package com.alierkoc.filmlerv1.servis
 
 import com.alierkoc.filmlerv1.infra.Constants
-import com.alierkoc.filmlerv1.model.MovieDetailResult
-import com.alierkoc.filmlerv1.model.Popular
-import com.alierkoc.filmlerv1.model.Trend
-import com.alierkoc.filmlerv1.model.UpComing
+import com.alierkoc.filmlerv1.model.detail.MovieDetailResult
+import com.alierkoc.filmlerv1.model.Popular.Popular
+import com.alierkoc.filmlerv1.model.trend.Trend
+import com.alierkoc.filmlerv1.model.upComing.UpComing
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call

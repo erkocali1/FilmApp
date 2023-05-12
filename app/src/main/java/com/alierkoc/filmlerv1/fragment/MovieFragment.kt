@@ -5,21 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alierkoc.filmlerv1.R
-import com.alierkoc.filmlerv1.adapter.MovieAdapter
-import com.alierkoc.filmlerv1.adapter.MovieTrendAdapter
-import com.alierkoc.filmlerv1.adapter.MovieUpComingAdapter
+import com.alierkoc.filmlerv1.adapter.moveiadapters.MovieAdapter
+import com.alierkoc.filmlerv1.adapter.moveiadapters.MovieTrendAdapter
+import com.alierkoc.filmlerv1.adapter.moveiadapters.MovieUpComingAdapter
 import com.alierkoc.filmlerv1.databinding.FragmentMovieBinding
-import com.alierkoc.filmlerv1.model.ResultResponse
-import com.alierkoc.filmlerv1.model.TrendResult
-import com.alierkoc.filmlerv1.model.UpComingResult
+import com.alierkoc.filmlerv1.model.Popular.ResultResponse
+import com.alierkoc.filmlerv1.model.trend.TrendResult
+import com.alierkoc.filmlerv1.model.upComing.UpComingResult
 import com.alierkoc.filmlerv1.viewmodel.MovieViewModel
-import java.util.Collections.addAll
 
 class MovieFragment : Fragment() {
     private lateinit var binding: FragmentMovieBinding
@@ -30,7 +28,6 @@ class MovieFragment : Fragment() {
     private lateinit var popularMovies : ArrayList<ResultResponse>
     private lateinit var trendMovies:ArrayList<TrendResult>
     private lateinit var upComingMovies:ArrayList<UpComingResult>
-    private lateinit var resultResponse:ResultResponse
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         binding = FragmentMovieBinding.inflate(layoutInflater, container, false)
@@ -45,7 +42,7 @@ class MovieFragment : Fragment() {
         binding.rv1.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         viewModel.getPopular()
- "123"
+
         binding.rv2.layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
         viewModel.getTrend("movie","week")
 
@@ -83,7 +80,11 @@ class MovieFragment : Fragment() {
                 binding.errorMassage.visibility=View.GONE
                 trendMovies= arrayListOf()
                 trendMovies.addAll(it.results)
-                recyclerTrendAdapter=MovieTrendAdapter(trendMovies,requireContext())
+                recyclerTrendAdapter= MovieTrendAdapter(trendMovies,requireContext()){ item->
+                    val bundle=Bundle()
+                    bundle.putString("movie_Id",item.id.toString())
+                    findNavController().navigate(R.id.action_movieFragment_to_detailFragment,bundle)
+                }
                 binding.rv2.adapter=recyclerTrendAdapter
             }
         })
@@ -94,7 +95,11 @@ class MovieFragment : Fragment() {
                 binding.errorMassage.visibility=View.GONE
                 upComingMovies= arrayListOf()
                 upComingMovies.addAll(it.results)
-                recyclerUpcomingAdapter= MovieUpComingAdapter(upComingMovies,requireContext())
+                recyclerUpcomingAdapter= MovieUpComingAdapter(upComingMovies,requireContext()){item->
+                    val bundle=Bundle()
+                    bundle.putString("movie_Id",item.id.toString())
+                    findNavController().navigate(R.id.action_movieFragment_to_detailFragment,bundle)
+                }
                 binding.rv3.adapter=recyclerUpcomingAdapter
             }
         })

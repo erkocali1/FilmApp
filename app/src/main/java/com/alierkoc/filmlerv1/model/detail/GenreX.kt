@@ -1,4 +1,4 @@
-package com.alierkoc.filmlerv1.model
+package com.alierkoc.filmlerv1.model.detail
 
 
 import com.google.gson.annotations.SerializedName

@@ -1,6 +1,7 @@
-package com.alierkoc.filmlerv1.model
+package com.alierkoc.filmlerv1.model.trend
 
 
+import com.alierkoc.filmlerv1.model.trend.TrendResult
 import com.google.gson.annotations.SerializedName
 
 data class Trend(

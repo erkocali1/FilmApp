@@ -1,21 +1,22 @@
-package com.alierkoc.filmlerv1.adapter
+package com.alierkoc.filmlerv1.adapter.moveiadapters
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.alierkoc.filmlerv1.databinding.ItemRowBinding
-import com.alierkoc.filmlerv1.model.ResultResponse
+import com.alierkoc.filmlerv1.model.Popular.ResultResponse
 import com.bumptech.glide.Glide
 
-class MovieAdapter(var filmDataList: List<ResultResponse>,var context: Context,val onMovieClickListener: (item: ResultResponse) -> Unit) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
+class MovieAdapter(var filmDataList: List<ResultResponse>, var context: Context, val onMovieClickListener: (item: ResultResponse) -> Unit)
+    : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: ItemRowBinding) : RecyclerView.ViewHolder(binding.root) {
 
 
 
 
-        fun bind(item:ResultResponse) {
+        fun bind(item: ResultResponse) {
            binding.movieId.text=item.title
             val url = "https://image.tmdb.org/t/p/w500/${item.backdropPath}"
             Glide.with(context)
