@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alierkoc.filmlerv1.R
 import com.alierkoc.filmlerv1.adapter.MovieAdapter
@@ -29,6 +30,7 @@ class MovieFragment : Fragment() {
     private lateinit var popularMovies : ArrayList<ResultResponse>
     private lateinit var trendMovies:ArrayList<TrendResult>
     private lateinit var upComingMovies:ArrayList<UpComingResult>
+    private lateinit var resultResponse:ResultResponse
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         binding = FragmentMovieBinding.inflate(layoutInflater, container, false)
@@ -63,7 +65,14 @@ class MovieFragment : Fragment() {
                 binding.errorMassage.visibility=View.GONE
                 popularMovies = arrayListOf()
                 popularMovies.addAll(it.results)
-                recyclerMovieAdapter = MovieAdapter(popularMovies,requireContext())
+                recyclerMovieAdapter = MovieAdapter(popularMovies,requireContext()){item->
+
+                    val bundle=Bundle()
+                    bundle.putString("movie_Id",item.id.toString())
+                    findNavController().navigate(R.id.action_movieFragment_to_detailFragment,bundle)
+
+
+                }
                 binding.rv1.adapter = recyclerMovieAdapter
             }
         })

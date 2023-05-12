@@ -24,17 +24,16 @@ class DetailFragment : Fragment() {
     ): View? {
         binding = FragmentDetailBinding.inflate(layoutInflater, container, false)
         return binding.root
-
-
-
+        
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val movieId=arguments?.getString("movie_Id").toString()
 
         viewModel=ViewModelProvider(this).get(DetailViewModel::class.java)
-        viewModel.getDataDetail("")
+        viewModel.getDataDetail(movieId)
         obserLiveData()
     }
 
