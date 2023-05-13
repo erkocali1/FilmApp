@@ -4,6 +4,10 @@ import com.alierkoc.filmlerv1.infra.Constants
 import com.alierkoc.filmlerv1.model.detail.MovieDetailResult
 import com.alierkoc.filmlerv1.model.Popular.Popular
 import com.alierkoc.filmlerv1.model.trend.Trend
+import com.alierkoc.filmlerv1.model.tvAiringToday.TvAiringToday
+import com.alierkoc.filmlerv1.model.tvPopular.TvPopular
+import com.alierkoc.filmlerv1.model.tvPopular.TvResult
+import com.alierkoc.filmlerv1.model.tvTopRated.TvTopRated
 import com.alierkoc.filmlerv1.model.upComing.UpComing
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -41,6 +45,17 @@ class FilmAPIServis{
 
     fun getDataDetail(takenDetail:String):Call<MovieDetailResult>{
         return api.getDetail(takenDetail)
+    }
+
+    fun getDataTvPopular(takenPage:Int):Call<TvPopular>{
+        return api.getTvPopular(takenPage)
+    }
+
+    fun getDataTvTopRated():Call<TvTopRated>{
+        return api.getTvTopRated()
+    }
+    fun getDataTvAiringToday():Call<TvAiringToday>{
+        return api.getTvAiringToday()
     }
 
 }

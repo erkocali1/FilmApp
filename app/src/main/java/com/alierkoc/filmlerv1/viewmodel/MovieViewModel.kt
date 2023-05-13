@@ -14,9 +14,9 @@ import retrofit2.Response
 
 class MovieViewModel:ViewModel() {
     private val service = FilmAPIServis()
-    val popularMovies = MutableLiveData<Popular>()
-    val trendMovies=MutableLiveData<Trend>()
-    val upComingMovies=MutableLiveData<UpComing>()
+    val popularMoviesData = MutableLiveData<Popular>()
+    val trendMoviesData=MutableLiveData<Trend>()
+    val upComingMoviesData=MutableLiveData<UpComing>()
     val load=MutableLiveData<Boolean>()
     val error=MutableLiveData<Boolean>()
 
@@ -29,7 +29,7 @@ class MovieViewModel:ViewModel() {
                 response: Response<Popular>
             ) {
                 if (response.isSuccessful) {
-                    popularMovies.value = response.body()
+                    popularMoviesData.value = response.body()
                     return
                 }
 
@@ -47,7 +47,7 @@ class MovieViewModel:ViewModel() {
         response.enqueue(object :Callback<Trend>{
             override fun onResponse(call: Call<Trend>, response: Response<Trend>) {
                 if (response.isSuccessful){
-                    trendMovies.value=response.body()
+                    trendMoviesData.value=response.body()
                 }
             }
 
@@ -65,7 +65,7 @@ class MovieViewModel:ViewModel() {
         response.enqueue(object :Callback<UpComing>{
             override fun onResponse(call: Call<UpComing>, response: Response<UpComing>) {
                 if (response.isSuccessful){
-                    upComingMovies.value=response.body()
+                    upComingMoviesData.value=response.body()
                 }
             }
 

@@ -31,6 +31,7 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //getting ıd from other fragment
         val movieId=arguments?.getString("movie_Id").toString()
 
         viewModel=ViewModelProvider(this).get(DetailViewModel::class.java)
@@ -39,7 +40,7 @@ class DetailFragment : Fragment() {
     }
 
     fun obserLiveData(){
-        viewModel.detailMovies.observe(viewLifecycleOwner, Observer { film->
+        viewModel.detailMoviesData.observe(viewLifecycleOwner, Observer { film->
 
             film?.let {
                 detailMovies= arrayListOf()

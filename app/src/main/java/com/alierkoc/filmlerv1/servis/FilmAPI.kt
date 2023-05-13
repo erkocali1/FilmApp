@@ -3,10 +3,15 @@ package com.alierkoc.filmlerv1.servis
 import com.alierkoc.filmlerv1.model.detail.MovieDetailResult
 import com.alierkoc.filmlerv1.model.Popular.Popular
 import com.alierkoc.filmlerv1.model.trend.Trend
+import com.alierkoc.filmlerv1.model.tvAiringToday.TvAiringToday
+import com.alierkoc.filmlerv1.model.tvPopular.TvPopular
+import com.alierkoc.filmlerv1.model.tvPopular.TvResult
+import com.alierkoc.filmlerv1.model.tvTopRated.TvTopRated
 import com.alierkoc.filmlerv1.model.upComing.UpComing
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface FilmAPI {
 
@@ -37,6 +42,17 @@ interface FilmAPI {
     @GET("movie/{movie_id}")
     fun getDetail(
         @Path("movie_id")movie_id:String):Call<MovieDetailResult>
+
+    @GET("tv/popular")
+    fun getTvPopular(
+        @Query("page")page:Int):Call<TvPopular>
+
+    @GET("tv/top_rated")
+    fun getTvTopRated():Call<TvTopRated>
+
+    @GET("tv/airing_today")
+    fun getTvAiringToday():Call<TvAiringToday>
+
 
 
 }

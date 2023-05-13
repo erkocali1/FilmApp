@@ -56,7 +56,7 @@ class MovieFragment : Fragment() {
 
     private fun observeLiveData() {
 
-        viewModel.popularMovies.observe(viewLifecycleOwner, Observer {
+        viewModel.popularMoviesData.observe(viewLifecycleOwner, Observer {
             it?.let {
                 binding.loadData.visibility=View.GONE
                 binding.errorMassage.visibility=View.GONE
@@ -74,7 +74,7 @@ class MovieFragment : Fragment() {
             }
         })
 
-        viewModel.trendMovies.observe(viewLifecycleOwner, Observer {
+        viewModel.trendMoviesData.observe(viewLifecycleOwner, Observer {
             it?.let {
                 binding.loadData.visibility=View.GONE
                 binding.errorMassage.visibility=View.GONE
@@ -89,7 +89,7 @@ class MovieFragment : Fragment() {
             }
         })
 
-        viewModel.upComingMovies.observe(viewLifecycleOwner, Observer {
+        viewModel.upComingMoviesData.observe(viewLifecycleOwner, Observer {
             it?.let {
                 binding.loadData.visibility=View.GONE
                 binding.errorMassage.visibility=View.GONE

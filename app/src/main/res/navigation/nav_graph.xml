@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_tvShowsFragment_to_dividedFragment"
             app:destination="@id/dividedFragment" />
+        <action
+            android:id="@+id/action_tvShowsFragment_to_detailTvFragment"
+            app:destination="@id/detailTvFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -44,5 +47,14 @@
         <action
             android:id="@+id/action_detailFragment_to_movieFragment"
             app:destination="@id/movieFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailTvFragment"
+        android:name="com.alierkoc.filmlerv1.fragment.DetailTvFragment"
+        android:label="fragment_detail_tv"
+        tools:layout="@layout/fragment_detail_tv" >
+        <action
+            android:id="@+id/action_detailTvFragment_to_tvShowsFragment"
+            app:destination="@id/tvShowsFragment" />
     </fragment>
 </navigation>

@@ -5,16 +5,18 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.alierkoc.filmlerv1.databinding.ItemRowBinding
+import com.alierkoc.filmlerv1.model.tvAiringToday.TvAiringTodayResult
 import com.alierkoc.filmlerv1.model.tvPopular.TvResult
 import com.bumptech.glide.Glide
 
-class TvPopularAdapter(private val tvList:List<TvResult>,val context: Context,val onTvClickListener:(item:TvResult)->Unit):
-RecyclerView.Adapter<TvPopularAdapter.ViewHolder>(){
+class TvAiringTodayAdapter(
+    private var tvAiringTodayList: List<TvAiringTodayResult>, var context: Context,
+    val onTvClickListener: (item: TvAiringTodayResult) -> Unit): RecyclerView.Adapter<TvAiringTodayAdapter.ViewHolder>() {
 
-    inner class ViewHolder(private val binding: ItemRowBinding):RecyclerView.ViewHolder(binding.root){
+    inner class ViewHolder(var binding: ItemRowBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: TvResult){
-            binding.movieId.text=item.name
+        fun bind(item: TvAiringTodayResult) {
+            binding.movieId.text = item.name
             val url = "https://image.tmdb.org/t/p/w500/${item.backdropPath}"
             Glide.with(context)
                 .load(url)
@@ -29,20 +31,13 @@ RecyclerView.Adapter<TvPopularAdapter.ViewHolder>(){
 
         val view=ItemRowBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return ViewHolder(view)
-
     }
-
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val view=tvList[position]
-        holder.bind(view)
+        val item=tvAiringTodayList[position]
+        holder.bind(item)
     }
     override fun getItemCount(): Int {
-
-        return tvList.size
-
+          return tvAiringTodayList.size
     }
-
-
-
 }

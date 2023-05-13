@@ -11,7 +11,7 @@ import retrofit2.Response
 
 class DetailViewModel:ViewModel() {
 
-    val detailMovies=MutableLiveData<MovieDetailResult>()
+    val detailMoviesData=MutableLiveData<MovieDetailResult>()
     private val service=FilmAPIServis()
 
     fun getDataDetail(gettingDetail:String){
@@ -21,7 +21,7 @@ class DetailViewModel:ViewModel() {
         response.enqueue(object : Callback<MovieDetailResult> {
             override fun onResponse(call: Call<MovieDetailResult>, response: Response<MovieDetailResult>) {
                 if (response.isSuccessful){
-                    detailMovies.value=response.body()
+                    detailMoviesData.value=response.body()
                 }
 
             }
