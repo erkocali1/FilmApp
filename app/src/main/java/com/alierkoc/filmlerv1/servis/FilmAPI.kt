@@ -51,7 +51,8 @@ interface FilmAPI {
     fun getTvTopRated():Call<TvTopRated>
 
     @GET("tv/airing_today")
-    fun getTvAiringToday():Call<TvAiringToday>
+    fun getTvAiringToday(
+        @Query("page")page: Int):Call<TvAiringToday>
 
 
 

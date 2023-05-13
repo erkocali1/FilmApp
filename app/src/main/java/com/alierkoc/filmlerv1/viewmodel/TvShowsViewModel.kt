@@ -58,9 +58,8 @@ class TvShowsViewModel:ViewModel() {
         })
     }
 
-    fun getTvAiringToday(){
-
-        val response=service.getDataTvAiringToday()
+    fun getTvAiringToday(gettingPage: Int){
+        val response=service.getDataTvAiringToday(gettingPage)
         response.enqueue(object :Callback<TvAiringToday>{
             override fun onResponse(call: Call<TvAiringToday>, response: Response<TvAiringToday>) {
                 if (response.isSuccessful){

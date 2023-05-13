@@ -54,8 +54,8 @@ class FilmAPIServis{
     fun getDataTvTopRated():Call<TvTopRated>{
         return api.getTvTopRated()
     }
-    fun getDataTvAiringToday():Call<TvAiringToday>{
-        return api.getTvAiringToday()
+    fun getDataTvAiringToday(takenPage: Int):Call<TvAiringToday>{
+        return api.getTvAiringToday(takenPage)
     }
 
 }

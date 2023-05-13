@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.alierkoc.filmlerv1.databinding.ItemRowBinding
 import com.alierkoc.filmlerv1.model.tvAiringToday.TvAiringTodayResult
-import com.alierkoc.filmlerv1.model.tvPopular.TvResult
 import com.bumptech.glide.Glide
 
 class TvAiringTodayAdapter(
