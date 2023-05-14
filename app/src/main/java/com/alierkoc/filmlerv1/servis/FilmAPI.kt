@@ -4,6 +4,7 @@ import com.alierkoc.filmlerv1.model.detail.MovieDetailResult
 import com.alierkoc.filmlerv1.model.Popular.Popular
 import com.alierkoc.filmlerv1.model.trend.Trend
 import com.alierkoc.filmlerv1.model.tvAiringToday.TvAiringToday
+import com.alierkoc.filmlerv1.model.tvDetail.TvDetail
 import com.alierkoc.filmlerv1.model.tvPopular.TvPopular
 import com.alierkoc.filmlerv1.model.tvPopular.TvResult
 import com.alierkoc.filmlerv1.model.tvTopRated.TvTopRated
@@ -28,6 +29,9 @@ interface FilmAPI {
     //https://image.tmdb.org/t/p/w500
     //https://image.tmdb.org/t/p/w500/2v3pC01rf0uXnECOM94pjfqk1TY.jpg
 
+
+    //------------MOVIE-------------------
+
     @GET("movie/popular")
     fun getPopular():Call<Popular>
 
@@ -43,6 +47,8 @@ interface FilmAPI {
     fun getDetail(
         @Path("movie_id")movie_id:String):Call<MovieDetailResult>
 
+    //-----------TV--------------------
+
     @GET("tv/popular")
     fun getTvPopular(
         @Query("page")page:Int):Call<TvPopular>
@@ -53,6 +59,11 @@ interface FilmAPI {
     @GET("tv/airing_today")
     fun getTvAiringToday(
         @Query("page")page: Int):Call<TvAiringToday>
+    @GET("tv/{tv_id}")
+    fun getTvDetail(
+        @Path("tv_id")tv_id:String):Call<TvDetail>
+
+
 
 
 

@@ -5,6 +5,7 @@ import com.alierkoc.filmlerv1.model.detail.MovieDetailResult
 import com.alierkoc.filmlerv1.model.Popular.Popular
 import com.alierkoc.filmlerv1.model.trend.Trend
 import com.alierkoc.filmlerv1.model.tvAiringToday.TvAiringToday
+import com.alierkoc.filmlerv1.model.tvDetail.TvDetail
 import com.alierkoc.filmlerv1.model.tvPopular.TvPopular
 import com.alierkoc.filmlerv1.model.tvPopular.TvResult
 import com.alierkoc.filmlerv1.model.tvTopRated.TvTopRated
@@ -56,6 +57,9 @@ class FilmAPIServis{
     }
     fun getDataTvAiringToday(takenPage: Int):Call<TvAiringToday>{
         return api.getTvAiringToday(takenPage)
+    }
+    fun getDataTvShowDetail(tvTakenDetail:String):Call<TvDetail>{
+        return api.getTvDetail(tvTakenDetail)
     }
 
 }

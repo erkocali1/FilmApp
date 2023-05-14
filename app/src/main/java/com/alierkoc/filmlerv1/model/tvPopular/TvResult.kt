@@ -9,7 +9,7 @@ data class TvResult(
     @SerializedName("first_air_date")
     val firstAirDate: String,
     @SerializedName("genre_ids")
-    val genreİds: List<Int>,
+    val genreIds: List<Int>,
     @SerializedName("id")
     val id: Int,
     @SerializedName("name")

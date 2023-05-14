@@ -66,9 +66,10 @@ class TvShowsFragment : Fragment() {
             it?.let {
                 tvResult= arrayListOf()
                 tvResult.addAll(it.results)
-                recyclerTvPopularAdapter= TvPopularAdapter(tvResult,requireContext()){item->
+                recyclerTvPopularAdapter= TvPopularAdapter(tvResult,requireContext())
+                {item->
                     val bundle=Bundle()
-                    bundle.putString("movie_Id",item.id.toString())
+                    bundle.putString("tv_id",item.id.toString())
                     findNavController().navigate(R.id.action_tvShowsFragment_to_detailTvFragment,bundle)
 
                 }
@@ -83,7 +84,7 @@ class TvShowsFragment : Fragment() {
                 tvTopRatedResult.addAll(it.results)
                 recyclerTvTopRatedAdapter= TvTopRatedAdapter(tvTopRatedResult,requireContext()){item->
                     val bundle=Bundle()
-                    bundle.putString("movie_Id",item.id.toString())
+                    bundle.putString("tv_id",item.id.toString())
                     findNavController().navigate(R.id.action_tvShowsFragment_to_detailTvFragment,bundle)
                 }
             }
@@ -96,7 +97,7 @@ class TvShowsFragment : Fragment() {
                 tvAiringTodayResult.addAll(it.results)
                 recyclerTvAiringToday= TvAiringTodayAdapter(tvAiringTodayResult,requireContext()){item->
                     val bundle=Bundle()
-                    bundle.putString("movie_Id",item.id.toString())
+                    bundle.putString("tv_id",item.id.toString())
                     findNavController().navigate(R.id.action_tvShowsFragment_to_detailTvFragment,bundle)
 
                 }
