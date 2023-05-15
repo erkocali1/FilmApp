@@ -1,7 +1,6 @@
 package com.alierkoc.filmlerv1.model.tvDetail
 
 
-import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 data class TvDetail(

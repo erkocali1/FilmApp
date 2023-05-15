@@ -47,6 +47,9 @@
         <action
             android:id="@+id/action_detailFragment_to_movieFragment"
             app:destination="@id/movieFragment" />
+        <action
+            android:id="@+id/action_detailFragment_to_favouritesFragment"
+            app:destination="@id/favouritesFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailTvFragment"
@@ -56,5 +59,20 @@
         <action
             android:id="@+id/action_detailTvFragment_to_tvShowsFragment"
             app:destination="@id/tvShowsFragment" />
+        <action
+            android:id="@+id/action_detailTvFragment_to_favouritesFragment"
+            app:destination="@id/favouritesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favouritesFragment"
+        android:name="com.alierkoc.filmlerv1.fragment.FavouritesFragment"
+        android:label="fragment_favourites"
+        tools:layout="@layout/fragment_favourites" >
+        <action
+            android:id="@+id/action_favouritesFragment_to_detailTvFragment"
+            app:destination="@id/detailTvFragment" />
+        <action
+            android:id="@+id/action_favouritesFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
 </navigation>

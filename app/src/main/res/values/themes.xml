@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.FilmlerV1" parent="Base.Theme.FilmlerV1" />
+    <style name="RoundedFloatingButton" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>
