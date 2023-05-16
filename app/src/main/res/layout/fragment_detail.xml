@@ -27,6 +27,25 @@
             app:srcCompat="@drawable/moviedata"
             android:scaleType="centerCrop"/>
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/add"
+            app:borderWidth="0dp"
+            app:elevation="6dp"
+            app:backgroundTint="@android:color/white"
+            app:rippleColor="@color/white"
+            app:pressedTranslationZ="12dp"
+            app:tint="#DA00FF"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="30dp"
+            app:fabSize="mini"
+            app:layout_constraintTop_toBottomOf="@id/popularityConstant"/>
+
+
+
+
         <TextView
             android:id="@+id/detailName"
             android:layout_width="wrap_content"

@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/dashBoard"
+        android:id="@+id/dividedFragment"
         android:icon="@drawable/home_pht"
         android:title="Dashboard" />
 
     <item
-        android:id="@+id/favorite"
+        android:id="@+id/zz"
+        android:title=""
+        app:showAsAction="never" />
+
+
+    <item
+        android:id="@+id/favouritesFragment"
         android:icon="@drawable/favorite"
         android:title="Favorite" />
 </menu>

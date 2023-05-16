@@ -66,6 +66,7 @@ class MovieFragment : Fragment() {
 
                     val bundle=Bundle()
                     bundle.putString("movie_Id",item.id.toString())
+                    bundle.putString("backdropPath", item.backdropPath)
                     findNavController().navigate(R.id.action_movieFragment_to_detailFragment,bundle)
 
 
@@ -83,6 +84,7 @@ class MovieFragment : Fragment() {
                 recyclerTrendAdapter= MovieTrendAdapter(trendMovies,requireContext()){ item->
                     val bundle=Bundle()
                     bundle.putString("movie_Id",item.id.toString())
+                    bundle.putString("backdropPath", item.backdropPath)
                     findNavController().navigate(R.id.action_movieFragment_to_detailFragment,bundle)
                 }
                 binding.rv2.adapter=recyclerTrendAdapter
@@ -98,6 +100,7 @@ class MovieFragment : Fragment() {
                 recyclerUpcomingAdapter= MovieUpComingAdapter(upComingMovies,requireContext()){item->
                     val bundle=Bundle()
                     bundle.putString("movie_Id",item.id.toString())
+                    bundle.putString("backdropPath", item.backdropPath)
                     findNavController().navigate(R.id.action_movieFragment_to_detailFragment,bundle)
                 }
                 binding.rv3.adapter=recyclerUpcomingAdapter
