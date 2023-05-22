@@ -1,6 +1,7 @@
 package com.alierkoc.filmlerv1.fragment
 
-import android.content.SharedPreferences
+import android.app.Application
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,23 +10,16 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.alierkoc.filmlerv1.databinding.FragmentDetailBinding
-import com.alierkoc.filmlerv1.model.FilmFavDataBase
 import com.alierkoc.filmlerv1.model.detail.MovieDetailResult
 import com.alierkoc.filmlerv1.model.fav.FavList
-import com.alierkoc.filmlerv1.servis.FilmDAO
 import com.alierkoc.filmlerv1.viewmodel.DetailViewModel
 import com.bumptech.glide.Glide
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-
 
 class DetailFragment : Fragment() {
     private lateinit var viewModel:DetailViewModel
     private lateinit var binding: FragmentDetailBinding
     private lateinit var detailMovies : ArrayList<MovieDetailResult>
-    private lateinit var dataBase: FilmFavDataBase
-    private lateinit var filmDao: FilmDAO
+    private lateinit var application: Application
 
 
 
@@ -44,9 +38,11 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        application = requireActivity().application
         //getting ıd from other fragment
         val movieId=arguments?.getString("movie_Id").toString()
         val backdropPath=arguments?.getString("backdropPath")
+        val name=arguments?.getString("name")
 
         viewModel=ViewModelProvider(this).get(DetailViewModel::class.java)
         viewModel.getDataDetail(movieId)
@@ -55,15 +51,13 @@ class DetailFragment : Fragment() {
 
 
 
-      val favList=FavList(movieId.toInt(), "backdropPathValue")
 
          //Add to room
         binding.fabButton.setOnClickListener {
-
-            val filmDao=viewModel.db.favFilmDao()
-            viewModel.saveRoom(favList,filmDao)
-
+            val favList = FavList(0, name!!, backdropPath!!)
+            viewModel.saveRoom(favList, application)
         }
+
     }
 
     fun obserLiveData(){

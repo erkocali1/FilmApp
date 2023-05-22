@@ -20,7 +20,7 @@ data class TvDetail(
     val inProduction: Boolean,
     @SerializedName("languages")
     val languages: List<String>,
-    @SerializedName("last_air_date")
+    @SerializedName("name")
     val name: String,
     @SerializedName("next_episode_to_air")
     val nextEpisodeToAir: Any,

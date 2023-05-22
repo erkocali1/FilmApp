@@ -1,19 +1,42 @@
 package com.alierkoc.filmlerv1.viewmodel
 
 
-import android.content.Context
+import android.app.Application
+import androidx.lifecycle.MutableLiveData
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.alierkoc.filmlerv1.model.FilmFavDataBase
+import com.alierkoc.filmlerv1.model.fav.FavList
 
-import com.alierkoc.filmlerv1.servis.FilmDAO
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class FavouritesViewModel :ViewModel() {
+class FavouritesViewModel : ViewModel() {
+    val favouritesRoomLiveData = MutableLiveData<List<FavList>>()
 
-    private lateinit var dataBase: FilmFavDataBase
-    private lateinit var fdao: FilmDAO
+    fun getFromRoom(application: Application): MutableLiveData<List<FavList>> {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                val dataBase = FilmFavDataBase.getInstance(application)
+                val filmDao = dataBase.favFilmDao()
+                val favList = filmDao.getAllFav()
+                favouritesRoomLiveData.postValue(favList)
+            }
+        }
+        return favouritesRoomLiveData
+    }
 
-
+    fun deleteFromRoom(application: Application, filmId: Int) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                val dataBase = FilmFavDataBase.getInstance(application)
+                val filmDao = dataBase.favFilmDao()
+                filmDao.deleteFav(filmId)
+            }
+        }
+    }
 }
 
 

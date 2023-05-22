@@ -70,6 +70,8 @@ class TvShowsFragment : Fragment() {
                 {item->
                     val bundle=Bundle()
                     bundle.putString("tv_id",item.id.toString())
+                    bundle.putString("backdropPath", item.backdropPath)
+                    bundle.putString("name", item.name)
                     findNavController().navigate(R.id.action_tvShowsFragment_to_detailTvFragment,bundle)
 
                 }
@@ -85,6 +87,8 @@ class TvShowsFragment : Fragment() {
                 recyclerTvTopRatedAdapter= TvTopRatedAdapter(tvTopRatedResult,requireContext()){item->
                     val bundle=Bundle()
                     bundle.putString("tv_id",item.id.toString())
+                    bundle.putString("backdropPath", item.backdropPath)
+                    bundle.putString("name", item.name)
                     findNavController().navigate(R.id.action_tvShowsFragment_to_detailTvFragment,bundle)
                 }
             }
@@ -98,6 +102,8 @@ class TvShowsFragment : Fragment() {
                 recyclerTvAiringToday= TvAiringTodayAdapter(tvAiringTodayResult,requireContext()){item->
                     val bundle=Bundle()
                     bundle.putString("tv_id",item.id.toString())
+                    bundle.putString("backdropPath", item.backdropPath)
+                    bundle.putString("name", item.name)
                     findNavController().navigate(R.id.action_tvShowsFragment_to_detailTvFragment,bundle)
 
                 }

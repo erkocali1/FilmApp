@@ -37,7 +37,7 @@
             app:backgroundTint="@android:color/white"
             app:rippleColor="@color/white"
             app:pressedTranslationZ="12dp"
-            app:tint="#DA00FF"
+            app:tint="#FF0000"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="30dp"
             app:fabSize="mini"

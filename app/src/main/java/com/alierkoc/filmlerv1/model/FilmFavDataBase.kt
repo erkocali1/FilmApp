@@ -12,24 +12,25 @@ abstract class FilmFavDataBase : RoomDatabase() {
 
     abstract fun favFilmDao(): FilmDAO
 
+    companion object {
+        @Volatile
+        private var instance: FilmFavDataBase? = null
+        private val lock = Any()
 
-//    companion object {
-//        @Volatile
-//        private var instance: FilmFavDataBase? = null
-//        private val lock = Any()
-//
-//        operator fun invoke(context: Context) = instance ?: synchronized(lock) {
-//            instance ?: createDataBase(context).also {
-//                instance = it
-//            }
-//        }
-//
-//        private fun createDataBase(context: Context) =
-//            Room.databaseBuilder(
-//                context.applicationContext,
-//                FilmFavDataBase::class.java,
-//                "filmFavDataBase"
-//            ).build()
-//    }
+        fun getInstance(context: Context): FilmFavDataBase {
+            return instance ?: synchronized(lock) {
+                instance ?: buildDatabase(context).also {
+                    instance = it
+                }
+            }
+        }
+
+        private fun buildDatabase(context: Context): FilmFavDataBase {
+            return Room.databaseBuilder(
+                context.applicationContext,
+                FilmFavDataBase::class.java,
+                "filmFavDatabase"
+            ).build()
+        }
+    }
 }
-

@@ -1,17 +1,17 @@
 package com.alierkoc.filmlerv1.viewmodel
 
 import android.app.Application
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.room.Room
+import androidx.lifecycle.viewModelScope
 import com.alierkoc.filmlerv1.model.FilmFavDataBase
 import com.alierkoc.filmlerv1.model.detail.MovieDetailResult
 import com.alierkoc.filmlerv1.model.fav.FavList
 import com.alierkoc.filmlerv1.servis.FilmAPIServis
-import com.alierkoc.filmlerv1.servis.FilmDAO
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,7 +22,6 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
 
     val detailMoviesData = MutableLiveData<MovieDetailResult>()
     private val service = FilmAPIServis()
-    private lateinit var fdao: FilmDAO
 
 
 
@@ -49,15 +48,16 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
 
     }
 
-    val db=Room.databaseBuilder(
-        application,FilmFavDataBase::class.java,"filmbase-name"
-    ).build()
-
-    fun saveRoom(favList: FavList, filmDao: FilmDAO) {
 
 
-        filmDao.insertAll(favList)
-
-
+    fun saveRoom(favList: FavList, application: Application) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                val dataBase = FilmFavDataBase.getInstance(application)
+                val filmDao = dataBase.favFilmDao()
+                filmDao.insertAll(favList)
+            }
+        }
     }
+
 }

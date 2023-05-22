@@ -5,11 +5,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.alierkoc.filmlerv1.databinding.ItemRow2Binding
-import com.alierkoc.filmlerv1.model.Popular.ResultResponse
 import com.alierkoc.filmlerv1.model.fav.FavList
 import com.bumptech.glide.Glide
 
-class FavAdapter(private var favlist:List<FavList>,var context: Context):RecyclerView.Adapter<FavAdapter.ViewHolder>() {
+class FavAdapter(private var favlist:MutableList<FavList>,var context: Context,val onItemDeleteClick: (filmId: Int) -> Unit):RecyclerView.Adapter<FavAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding:ItemRow2Binding):RecyclerView.ViewHolder(binding.root){
 
@@ -20,6 +19,9 @@ class FavAdapter(private var favlist:List<FavList>,var context: Context):Recycle
             Glide.with(context)
                 .load(url)
                 .into(binding.posterPath)
+            binding.root.setOnClickListener {
+                onItemDeleteClick(item.uid)
+            }
         }
 
     }

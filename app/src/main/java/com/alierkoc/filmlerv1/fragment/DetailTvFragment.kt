@@ -1,5 +1,6 @@
 package com.alierkoc.filmlerv1.fragment
 
+import android.app.Application
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.alierkoc.filmlerv1.databinding.FragmentDetailTvBinding
+import com.alierkoc.filmlerv1.model.fav.FavList
 import com.alierkoc.filmlerv1.model.tvDetail.TvDetail
 import com.alierkoc.filmlerv1.viewmodel.TvShowsDetailViewModel
 import com.bumptech.glide.Glide
@@ -17,6 +19,7 @@ class DetailTvFragment : Fragment() {
     private lateinit var  binding:FragmentDetailTvBinding
     private  lateinit var viewModel:TvShowsDetailViewModel
     private lateinit var tvShowsDetailResult:ArrayList<TvDetail>
+    private lateinit var application: Application
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -30,9 +33,14 @@ class DetailTvFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        application = requireActivity().application
+
+
         //getting ıd from other fragment
 
         val tvId=arguments?.getString("tv_id")
+        val backdropPath=arguments?.getString("backdropPath")
+        val name=arguments?.getString("name")
         let {
             tvId?.let {
                 viewModel=ViewModelProvider(this).get(TvShowsDetailViewModel::class.java)
@@ -40,6 +48,13 @@ class DetailTvFragment : Fragment() {
                 observeLiveData()
             }
         }
+
+        binding.fabButton.setOnClickListener {
+            val favList = FavList(0, name!!, backdropPath!!)
+            viewModel.saveRoom(favList, application)
+        }
+
+
     }
 
     fun observeLiveData(){
