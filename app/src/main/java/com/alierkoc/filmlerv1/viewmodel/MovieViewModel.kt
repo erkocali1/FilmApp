@@ -13,15 +13,18 @@ import retrofit2.Response
 
 
 class MovieViewModel:ViewModel() {
+
     private val service = FilmAPIServis()
     val popularMoviesData = MutableLiveData<Popular>()
     val trendMoviesData=MutableLiveData<Trend>()
     val upComingMoviesData=MutableLiveData<UpComing>()
     val load=MutableLiveData<Boolean>()
-    val error=MutableLiveData<Boolean>()
+
 
 
     fun getPopular() {
+
+        load.value=true
         val response = service.getDataPopular()
         response.enqueue(object : Callback<Popular> {
             override fun onResponse(
@@ -30,7 +33,7 @@ class MovieViewModel:ViewModel() {
             ) {
                 if (response.isSuccessful) {
                     popularMoviesData.value = response.body()
-                    return
+                    load.value=false
                 }
 
             }
@@ -43,15 +46,19 @@ class MovieViewModel:ViewModel() {
     }
 
     fun getTrend(gettingType:String,gettingWindow:String){
+
+        load.value=true
         val response=service.getDataTrend(gettingType,gettingWindow)
         response.enqueue(object :Callback<Trend>{
             override fun onResponse(call: Call<Trend>, response: Response<Trend>) {
                 if (response.isSuccessful){
                     trendMoviesData.value=response.body()
+                    load.value=false
                 }
             }
 
             override fun onFailure(call: Call<Trend>, t: Throwable) {
+
                 Log.i("getData service", "onFailure: $t")
             }
 
@@ -60,16 +67,17 @@ class MovieViewModel:ViewModel() {
 
 
     fun getUpcoming(){
+        load.value=true
         val response=service.getDataUpComing()
-
         response.enqueue(object :Callback<UpComing>{
             override fun onResponse(call: Call<UpComing>, response: Response<UpComing>) {
                 if (response.isSuccessful){
                     upComingMoviesData.value=response.body()
+                    load.value=false
                 }
             }
-
             override fun onFailure(call: Call<UpComing>, t: Throwable) {
+
                 Log.i("getUpcoming service", "onFailure: $t")
 
             }

@@ -2,15 +2,19 @@ package com.alierkoc.filmlerv1.ui.activies
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import com.alierkoc.filmlerv1.R
 import com.alierkoc.filmlerv1.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var sp:SharedPreferences
     private lateinit var binding:ActivityMainBinding
+    private lateinit var galleryLauncher: ActivityResultLauncher<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityMainBinding.inflate(layoutInflater)
@@ -35,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
                 val editor=sp.edit()
                 editor.putString("userName",userName)
-                editor.commit()
+                editor.apply()
 
 
                 startActivity(Intent(this,SelectionActivity::class.java))
@@ -48,4 +52,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+
+
 }

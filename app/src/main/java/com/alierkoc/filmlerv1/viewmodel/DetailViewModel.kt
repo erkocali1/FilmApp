@@ -21,12 +21,15 @@ import retrofit2.Response
 class DetailViewModel(application: Application) : AndroidViewModel(application) {
 
     val detailMoviesData = MutableLiveData<MovieDetailResult>()
+    val load=MutableLiveData<Boolean>()
     private val service = FilmAPIServis()
+
 
 
 
     fun getDataDetail(gettingDetail: String) {
 
+        load.value=true
         val response = service.getDataDetail(gettingDetail)
 
         response.enqueue(object : Callback<MovieDetailResult> {
@@ -36,6 +39,7 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
             ) {
                 if (response.isSuccessful) {
                     detailMoviesData.value = response.body()
+                    load.value=false
                 }
 
             }
@@ -55,9 +59,14 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
             withContext(Dispatchers.IO) {
                 val dataBase = FilmFavDataBase.getInstance(application)
                 val filmDao = dataBase.favFilmDao()
-                filmDao.insertAll(favList)
+
+                val existingFilm = filmDao.getFilmByName(favList.id)
+                if (existingFilm == null) {
+                    filmDao.insertAll(favList)
+                }
             }
         }
     }
+
 
 }

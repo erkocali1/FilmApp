@@ -17,10 +17,12 @@ class TvShowsViewModel:ViewModel() {
      var tvResultData=MutableLiveData<TvPopular>()
      var tvTopratedData=MutableLiveData<TvTopRated>()
     var tvAiringTodayData=MutableLiveData<TvAiringToday>()
+    val load=MutableLiveData<Boolean>()
 
 
     fun getTvPopular(gettingPage:Int){
 
+        load.value=true
         val response=service.getDataTvPopular(gettingPage)
 
         response.enqueue(object :Callback<TvPopular>{
@@ -28,6 +30,7 @@ class TvShowsViewModel:ViewModel() {
 
                 if (response.isSuccessful){
                     tvResultData.value=response.body()
+                    load.value=false
                 }
 
             }
@@ -42,12 +45,14 @@ class TvShowsViewModel:ViewModel() {
     }
 
     fun getTvToprated(){
+        load.value=true
         val response=service.getDataTvTopRated()
         response.enqueue(object :Callback<TvTopRated>{
             override fun onResponse(call: Call<TvTopRated>, response: Response<TvTopRated>) {
 
                 if (response.isSuccessful){
                     tvTopratedData.value=response.body()
+                    load.value=false
                 }
             }
 
@@ -59,11 +64,13 @@ class TvShowsViewModel:ViewModel() {
     }
 
     fun getTvAiringToday(gettingPage: Int){
+        load.value=true
         val response=service.getDataTvAiringToday(gettingPage)
         response.enqueue(object :Callback<TvAiringToday>{
             override fun onResponse(call: Call<TvAiringToday>, response: Response<TvAiringToday>) {
                 if (response.isSuccessful){
                     tvAiringTodayData.value=response.body()
+                    load.value=false
                 }
 
             }

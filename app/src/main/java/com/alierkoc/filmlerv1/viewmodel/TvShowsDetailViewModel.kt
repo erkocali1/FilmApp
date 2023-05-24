@@ -21,14 +21,17 @@ import retrofit2.Response
 class TvShowsDetailViewModel : ViewModel() {
     private val service = FilmAPIServis()
     var getTvDetailData =MutableLiveData<TvDetail>()
+    val load=MutableLiveData<Boolean>()
 
     fun getDataTvShowDetail(gettingId: String) {
+        load.value=true
         val response=service.getDataTvShowDetail(gettingId)
         response.enqueue(object :Callback<TvDetail>{
             override fun onResponse(call: Call<TvDetail>, response: Response<TvDetail>) {
                 if (response.isSuccessful){
                     getTvDetailData.value=response.body()
                     Log.i("TV Detail Data", "${response.body()}")
+                    load.value=false
                 }
                 else{
                     Log.i("FailDataTv", "API Error: ${response.code()}")

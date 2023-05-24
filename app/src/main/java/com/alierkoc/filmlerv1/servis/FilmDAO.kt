@@ -21,5 +21,9 @@ interface FilmDAO {
     @Query("DELETE FROM FavList WHERE uid = :filmId")
     fun deleteFav(filmId: Int)
 
+    @Query("SELECT * FROM FavList WHERE id = :filmId")
+    fun getFilmByName(filmId: String): FavList?
+
+
 
 }

@@ -19,7 +19,7 @@ class FavAdapter(private var favlist:MutableList<FavList>,var context: Context,v
             Glide.with(context)
                 .load(url)
                 .into(binding.posterPath)
-            binding.root.setOnClickListener {
+            binding.deleteItem.setOnClickListener {
                 onItemDeleteClick(item.uid)
             }
         }

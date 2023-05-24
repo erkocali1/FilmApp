@@ -58,8 +58,8 @@ class MovieFragment : Fragment() {
 
         viewModel.popularMoviesData.observe(viewLifecycleOwner, Observer {
             it?.let {
-                binding.loadData.visibility=View.GONE
-                binding.errorMassage.visibility=View.GONE
+                binding.rv1.visibility=View.VISIBLE
+                binding.loadData.visibility = View.GONE
                 popularMovies = arrayListOf()
                 popularMovies.addAll(it.results)
                 recyclerMovieAdapter = MovieAdapter(popularMovies,requireContext()){item->
@@ -73,13 +73,14 @@ class MovieFragment : Fragment() {
 
                 }
                 binding.rv1.adapter = recyclerMovieAdapter
+
             }
         })
 
         viewModel.trendMoviesData.observe(viewLifecycleOwner, Observer {
             it?.let {
-                binding.loadData.visibility=View.GONE
-                binding.errorMassage.visibility=View.GONE
+                binding.rv2.visibility=View.VISIBLE
+                binding.loadData.visibility = View.GONE
                 trendMovies= arrayListOf()
                 trendMovies.addAll(it.results)
                 recyclerTrendAdapter= MovieTrendAdapter(trendMovies,requireContext()){ item->
@@ -90,13 +91,14 @@ class MovieFragment : Fragment() {
                     findNavController().navigate(R.id.action_movieFragment_to_detailFragment,bundle)
                 }
                 binding.rv2.adapter=recyclerTrendAdapter
+
             }
         })
 
         viewModel.upComingMoviesData.observe(viewLifecycleOwner, Observer {
             it?.let {
-                binding.loadData.visibility=View.GONE
-                binding.errorMassage.visibility=View.GONE
+                binding.rv3.visibility=View.VISIBLE
+                binding.loadData.visibility = View.GONE
                 upComingMovies= arrayListOf()
                 upComingMovies.addAll(it.results)
                 recyclerUpcomingAdapter= MovieUpComingAdapter(upComingMovies,requireContext()){item->
@@ -110,6 +112,24 @@ class MovieFragment : Fragment() {
             }
         })
 
+        viewModel.load.observe(viewLifecycleOwner, Observer {
+            if (it){
+                binding.loadData.visibility=View.VISIBLE
+                binding.rv1.visibility=View.GONE
+                binding.rv2.visibility=View.GONE
+                binding.rv3.visibility=View.GONE
+                binding.movie.visibility=View.GONE
+                binding.trend.visibility=View.GONE
+                binding.comingSoon.visibility=View.GONE
+            }
+            else{
+                binding.loadData.visibility=View.GONE
+                binding.movie.visibility=View.VISIBLE
+                binding.trend.visibility=View.VISIBLE
+                binding.comingSoon.visibility=View.VISIBLE
+            }
+
+        })
     }
 
 

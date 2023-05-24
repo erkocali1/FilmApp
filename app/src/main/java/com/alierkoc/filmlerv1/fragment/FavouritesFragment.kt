@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alierkoc.filmlerv1.adapter.FavAdapter
@@ -20,6 +21,7 @@ class FavouritesFragment : Fragment() {
     private lateinit var recyclcerFavAdapter: FavAdapter
     private lateinit var viewModel:FavouritesViewModel
     private lateinit var application: Application
+    private lateinit var favorites:ArrayList<FavList>
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
        binding=FragmentFavouritesBinding.inflate(layoutInflater,container,false)
@@ -33,39 +35,26 @@ class FavouritesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
-
-
         viewModel = ViewModelProvider(this).get(FavouritesViewModel::class.java)
         application = requireActivity().application
-        favList = ArrayList()
+        viewModel.getFromRoom(application)
 
-        recyclcerFavAdapter = FavAdapter(favList, requireContext()) { filmId ->
-            viewModel.deleteFromRoom(application, filmId)
-        }
         binding.rvFav.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvFav.adapter = recyclcerFavAdapter
-
-
-
-
 
         observeLiveData()
-
-
-
     }
 
     private fun observeLiveData() {
-        viewModel.getFromRoom(application).observe(viewLifecycleOwner) { favListFromRoom ->
-            favList.clear()
-            favList.addAll(favListFromRoom)
-            recyclcerFavAdapter.notifyDataSetChanged()
-        }
-
-
+        viewModel.favouritesRoomLiveData.observe(viewLifecycleOwner, Observer { favListFromRoom ->
+            favListFromRoom?.let {
+                favorites = ArrayList(it)
+                recyclcerFavAdapter = FavAdapter(favorites, requireContext()) { filmId ->
+                    favorites.removeIf { fav -> fav.uid == filmId }
+                    recyclcerFavAdapter.notifyDataSetChanged()
+                    viewModel.deleteFromRoom(application, filmId)
+                }
+                binding.rvFav.adapter = recyclcerFavAdapter
+            }
+        })
     }
-
-
 }

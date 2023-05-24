@@ -64,6 +64,7 @@ class TvShowsFragment : Fragment() {
 
         viewmodel.tvResultData.observe(viewLifecycleOwner, Observer{
             it?.let {
+                binding.rv1.visibility=View.VISIBLE
                 tvResult= arrayListOf()
                 tvResult.addAll(it.results)
                 recyclerTvPopularAdapter= TvPopularAdapter(tvResult,requireContext())
@@ -82,6 +83,7 @@ class TvShowsFragment : Fragment() {
 
         viewmodel.tvTopratedData.observe(viewLifecycleOwner, Observer {
             it?.let {
+                binding.rv2.visibility=View.VISIBLE
                 tvTopRatedResult= arrayListOf()
                 tvTopRatedResult.addAll(it.results)
                 recyclerTvTopRatedAdapter= TvTopRatedAdapter(tvTopRatedResult,requireContext()){item->
@@ -97,6 +99,7 @@ class TvShowsFragment : Fragment() {
 
         viewmodel.tvAiringTodayData.observe(viewLifecycleOwner, Observer {
             it?.let {
+                binding.rv3.visibility=View.VISIBLE
                 tvAiringTodayResult= arrayListOf()
                 tvAiringTodayResult.addAll(it.results)
                 recyclerTvAiringToday= TvAiringTodayAdapter(tvAiringTodayResult,requireContext()){item->
@@ -109,6 +112,27 @@ class TvShowsFragment : Fragment() {
                 }
             }
             binding.rv3.adapter=recyclerTvAiringToday
+        })
+
+        viewmodel.load.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                if (it){
+                    binding.loadData.visibility=View.VISIBLE
+                    binding.rv1.visibility=View.GONE
+                    binding.rv2.visibility=View.GONE
+                    binding.rv3.visibility=View.GONE
+                    binding.tvShows.visibility=View.GONE
+                    binding.topRated.visibility=View.GONE
+                    binding.airingToday.visibility=View.GONE
+                }
+                else{
+                    binding.loadData.visibility=View.GONE
+                    binding.tvShows.visibility=View.VISIBLE
+                    binding.topRated.visibility=View.VISIBLE
+                    binding.airingToday.visibility=View.VISIBLE
+                }
+
+            }
         })
 
 

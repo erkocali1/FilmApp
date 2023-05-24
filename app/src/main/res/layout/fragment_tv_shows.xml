@@ -14,7 +14,7 @@
         tools:context=".fragment.TvShowsFragment">
 
         <TextView
-
+            android:id="@+id/tvShows"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -28,48 +28,63 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/topRated"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="308dp"
+            android:layout_marginTop="12dp"
             android:text="Top Rated"
             android:textSize="28dp"
             android:textStyle="bold"
             android:textColor="@color/white"
-            app:layout_constraintBaseline_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/rv_1" />
         <TextView
+            android:id="@+id/airingToday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="575dp"
+            android:layout_marginTop="12dp"
             android:text="Airing Today"
             android:textSize="28dp"
             android:textStyle="bold"
             android:textColor="@color/white"
-            app:layout_constraintBaseline_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/rv_2" />
+        <ProgressBar
+            android:id="@+id/loadData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="380dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="100dp" />
+            app:layout_constraintTop_toBottomOf="@id/tvShows"
+            android:layout_marginTop="12dp" />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="350dp"/>
+            app:layout_constraintTop_toBottomOf="@id/topRated"
+            android:layout_marginTop="12dp"/>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="620dp" />
+            app:layout_constraintTop_toBottomOf="@id/airingToday"
+            android:layout_marginTop="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_3"/>
 
 
 
