@@ -9,9 +9,9 @@
 
     <ImageView
         android:id="@+id/profileP"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="5dp"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="15dp"
         android:layout_marginStart="5dp"/>
 
     <fragment
@@ -33,7 +33,7 @@
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             app:menu="@menu/nav_menu"
             android:background="@android:color/transparent"/>
 
@@ -50,4 +50,6 @@
         android:backgroundTint="@color/white"
         app:shapeAppearanceOverlay="@style/RoundedFloatingButton"
         app:layout_anchor="@id/bottomAppBar"/>
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

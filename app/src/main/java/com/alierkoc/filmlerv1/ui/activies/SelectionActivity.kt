@@ -6,12 +6,9 @@ import android.content.SharedPreferences
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.navigation.ui.NavigationUI
+import androidx.navigation.findNavController
 import com.alierkoc.filmlerv1.R
 import com.alierkoc.filmlerv1.databinding.ActivitySelectionBinding
 import com.alierkoc.filmlerv1.viewmodel.SelectionViewModel
@@ -21,8 +18,8 @@ class SelectionActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySelectionBinding
     private lateinit var viewModel: SelectionViewModel
-    private lateinit var navController: NavController
     private lateinit var sp: SharedPreferences
+    private lateinit var bottomNavigationView:BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySelectionBinding.inflate(layoutInflater)
@@ -31,17 +28,20 @@ class SelectionActivity : AppCompatActivity() {
 
         sp=getSharedPreferences("entryInformation", MODE_PRIVATE)
 
-        val bottomNavigationView: BottomNavigationView = binding.bottomNavView
+         bottomNavigationView = binding.bottomNavView
 
         viewModel = ViewModelProvider(this)[SelectionViewModel::class.java]
 
         binding.bottomNavView.background = null
         bottomNavigationView.menu.getItem(1).isEnabled = false
 
-        navController = Navigation.findNavController(this, R.id.fragmentContainerView)
-        NavigationUI.setupWithNavController(binding.bottomNavView, navController)
+        setupBottomNavigation()
+        showPP()
 
 
+
+//       navController = Navigation.findNavController(this, R.id.fragmentContainerView)
+//        NavigationUI.setupWithNavController(binding.bottomNavView, navController)
 
 
         binding.fab.setOnClickListener {
@@ -50,10 +50,26 @@ class SelectionActivity : AppCompatActivity() {
 
     }
 
+    private fun setupBottomNavigation() {
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavView)
 
+        val navController = findNavController(R.id.fragmentContainerView)
 
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            val destination = when (item.itemId) {
+                R.id.dividedFragment -> R.id.dividedFragment
+                R.id.favouritesFragment -> R.id.favouritesFragment
+                else -> null
+            }
 
-   private fun logOut(){
+            destination?.let {
+                navController.navigate(it)
+                true
+            } ?: false
+        }
+    }
+
+    private fun logOut(){
 
         val editor=sp.edit()
         val takenId=sp.getString("userName","")
@@ -69,7 +85,7 @@ class SelectionActivity : AppCompatActivity() {
             editor.remove("userName")
             editor.apply()
             viewModel.deleteAllFromRoom(application)
-            startActivity(Intent(this,MainActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
 
 
             Toast.makeText(this, "$takenId hesabından çıkıldı", Toast.LENGTH_SHORT).show()
@@ -83,9 +99,15 @@ class SelectionActivity : AppCompatActivity() {
         }
         val dialog = builder.create()
         dialog.show()
-
-
     }
 
+    private fun showPP(){
+        val imageUri = intent.getStringExtra("imageUri")
+        if (imageUri != null) {
+            val selectedImage = Uri.parse(imageUri)
+            binding.profileP.setImageURI(selectedImage)
+        }
+
+    }
 
 }

@@ -25,18 +25,12 @@
         <action
             android:id="@+id/action_movieFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
-        <action
-            android:id="@+id/action_movieFragment_to_dividedFragment"
-            app:destination="@id/dividedFragment" />
     </fragment>
     <fragment
         android:id="@+id/tvShowsFragment"
         android:name="com.alierkoc.filmlerv1.fragment.TvShowsFragment"
         android:label="fragment_tv_shows"
         tools:layout="@layout/fragment_tv_shows" >
-        <action
-            android:id="@+id/action_tvShowsFragment_to_dividedFragment"
-            app:destination="@id/dividedFragment" />
         <action
             android:id="@+id/action_tvShowsFragment_to_detailTvFragment"
             app:destination="@id/detailTvFragment" />

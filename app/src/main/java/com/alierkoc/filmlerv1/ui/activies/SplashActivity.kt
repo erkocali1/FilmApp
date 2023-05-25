@@ -4,7 +4,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.alierkoc.filmlerv1.R
 import com.alierkoc.filmlerv1.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {

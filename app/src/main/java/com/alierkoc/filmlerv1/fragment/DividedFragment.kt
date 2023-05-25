@@ -25,7 +25,10 @@ class DividedFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentDividedBinding.inflate(layoutInflater, container, false)
+        binding.filmImage.clipToOutline=true
+        binding.tvshowImage.clipToOutline=true
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

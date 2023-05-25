@@ -50,7 +50,11 @@ class TvShowsDetailViewModel : ViewModel() {
             withContext(Dispatchers.IO) {
                 val dataBase = FilmFavDataBase.getInstance(application)
                 val filmDao = dataBase.favFilmDao()
-                filmDao.insertAll(favList)
+
+                val existingFilm = filmDao.getFilmByName(favList.id)
+                if (existingFilm == null) {
+                    filmDao.insertAll(favList)
+                }
             }
         }
     }

@@ -91,6 +91,7 @@ class DetailTvFragment : Fragment() {
                     binding.genresConstant.visibility=View.GONE
                     binding.popularity.visibility=View.GONE
                     binding.popularityConstant.visibility=View.GONE
+                    binding.fabButton.visibility=View.GONE
                 }
                 else{
                     binding.loadData.visibility=View.GONE
@@ -102,6 +103,7 @@ class DetailTvFragment : Fragment() {
                     binding.genresConstant.visibility=View.VISIBLE
                     binding.popularity.visibility=View.VISIBLE
                     binding.popularityConstant.visibility=View.VISIBLE
+                    binding.fabButton.visibility=View.VISIBLE
                 }
             }
         })
