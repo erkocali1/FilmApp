@@ -38,7 +38,7 @@
   <img src="https://github.com/erkocali1/ss/blob/master/app/src/main/res/drawable/tv.jpeg" width="200" height="500">
 </div>
  <br>
- -İzlenmek istenen liste elemanına tıklanınca Adapter daki Onclick methodun çağrılmasyla aşağıdaki  detay  sayfaları açılıyor ve burada yine Retroifit yardımıyla API dan alınan veriler Viewbinding yöntemi le bind ediliyor ayrıca İstenilen veri Fab buton yardımyla Favorites listesine alınarak Room Database de kaydediliyor.
+ -İzlenmek istenen liste elemanına tıklanınca Adapter daki Onclick methodun çağrılmasyla aşağıdaki  detay  sayfaları açılıyor ve burada yine Retrofit yardımıyla API dan alınan veriler Viewbinding yöntemi le bind ediliyor ayrıca İstenilen veri Fab buton yardımyla Favorites listesine alınarak Room Database de kaydediliyor.
   <br>
    <br>
    <img src="https://github.com/erkocali1/ss/blob/master/app/src/main/res/drawable/detay.jpeg" width="200" height="500">
