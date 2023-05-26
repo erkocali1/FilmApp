@@ -15,7 +15,7 @@
    <p>
 - Navigation Component <br>
 -Room Data Base<br>
--Retroif<br>
+-Retrofit<br>
  -Recycler View<br>
 -View Binding<br>
     -Shared Preferences<br>
