@@ -8,6 +8,7 @@
  👋Arkanıza yaslanıp incelemelik bir uygulamayı sizlere sunmaktan onur duyarım.
  Bu uygulamada bir çok compenentlerin güncel hallerini kullanarak bir 
  Movie App yapmaya çalıştım.İnceleyen arkadaşlara faydalı olması dileğiyle ⚡⚡⚡ :)
+ 
   <img src="https://github.com/erkocali1/ss/blob/master/app/src/main/res/drawable/zx.jpg"  width="500" height="300" >
  
   <h1>İşte Kullandığım Bazı Yapılar </h1>
