@@ -30,7 +30,8 @@
  Seçim ekranında Fragment Container View ve Bottom Navigation View bizlere istenilen fragmentlara Navigation Component i  sayesinde geçiş imkanı sağlıyor.  <br> 
    <br>  
  <img src="https://github.com/erkocali1/ss/blob/master/app/src/main/res/drawable/secim.jpeg"  width="200" height="500" >
- -Seçim ekranındandan sonra Retrofit den çektiğimiz veriler RecyclerView yardımıyla liste halinde görmemize olanak sağlıyor ve aşağıdaki ekranları oluşturuyor. <br>  
+ -Seçim ekranındandan sonra Retrofit den çektiğimiz veriler RecyclerView yardımıyla liste halinde görmemize olanak sağlıyor ve aşağıdaki ekranları oluşturuyor. <br> 
+   <br>
 <div style="display: flex;">
   <img src="https://github.com/erkocali1/ss/blob/master/app/src/main/res/drawable/movie.jpeg" width="200" height="500" style="padding-right: 300 px;">
   <img src="https://github.com/erkocali1/ss/blob/master/app/src/main/res/drawable/tv.jpeg" width="200" height="500">
@@ -38,14 +39,23 @@
  <br>
  -İzlenmek istenen liste elemanına tıklanınca Adapter daki Onclick methodun çağrılmasyla aşağıdaki  detay  sayfaları açılıyor ve burada yine Retroifit yardımıyla API dan alınan veriler Viewbinding yöntemi le bind ediliyor ayrıca İstenilen veri Fab buton yardımyla Favorites listesine alınarak Room Database de kaydediliyor.
   <br>
+   <br>
    <img src="https://github.com/erkocali1/ss/blob/master/app/src/main/res/drawable/detay.jpeg" width="200" height="500">
  <br>
  -Aşağıdaki Bottom Navigation Bar sayesinde istenilirse Favorites listesine geçilebilir.Buradada Room Database kaydedilen veriler Recyclerview yardımıyla listelenbiliyor ve istenilirse burda silinerek Roomdan silinebiliyor.Ayrıca Bottom Navigation Bar da bulunan Login Fab butonuna basarak kullanıcı bilgileri gözlemlenebilir dilenirse çıkış yapılarak tüm kaydedilen bilgiler silinerek tekrardan Login Ekranına yönledirilebilir.
   <br> 
+   <br>
  <div style="display: flex;">
   <img src="https://github.com/erkocali1/ss/blob/master/app/src/main/res/drawable/fav.jpeg" width="200" height="500" style="padding-right: 300 px;">
   <img src="https://github.com/erkocali1/ss/blob/master/app/src/main/res/drawable/logout.jpeg" width="200" height="500">
 </div>
+ <br> 
+ <br> 
+ <br>
+   <img src="https://www.icegif.com/wp-content/uploads/high-five-icegif-18.gif" width="500" height="300">
+ <br>
+ <br>
+     <h3>🤝🤝🤝 Beni dinlediğiniz için çok teşekkürler iyi kodlamalar 🤝🤝🤝 <br></h3>
  
 </p>
  
